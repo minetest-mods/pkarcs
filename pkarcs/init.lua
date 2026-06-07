@@ -7,7 +7,7 @@
 
 	This mod adds arc-nodes to Minetest as well as arcs for inner and outer
 	corners, based on the default stone and wood materials.
-	
+
 	To make arcs from nodes of your mod, put "pkarcs?" into your depends.txt,
 	and call this function in your init.lua:
 
@@ -19,12 +19,11 @@ end
 
 --]]
 
-
 pkarcs = {}
 
 -- convert integer coordinates to nodebox coordinates
 
-function nb(n)
+local function nb(n)
 	return n/16-1/2
 end
 
@@ -33,7 +32,7 @@ end
 function pkarcs.register_all(nodename, desc, tile, sound, group, craftmaterial)
 	local tile_collection
 	if type(tile) == "string" then
-		tile_collection[1] = tile
+		tile_collection =  { tile }
 	else
 		tile_collection = table.copy(tile)
 	end
@@ -95,7 +94,7 @@ function pkarcs.register_all(nodename, desc, tile, sound, group, craftmaterial)
 			local wall = math.floor(param2/NROT)
 			if rot >=3 then
 				rot = 0
-			else 
+			else
 				rot = rot +1
 			end
 			param2 = wall*NROT+rot
@@ -170,7 +169,7 @@ function pkarcs.register_all(nodename, desc, tile, sound, group, craftmaterial)
 			local wall = math.floor(param2/NROT)
 			if rot >=3 then
 				rot = 0
-			else 
+			else
 				rot = rot +1
 			end
 			param2 = wall*NROT+rot
@@ -264,7 +263,7 @@ function pkarcs.register_all(nodename, desc, tile, sound, group, craftmaterial)
 			local wall = math.floor(param2/NROT)
 			if rot >=3 then
 				rot = 0
-			else 
+			else
 				rot = rot +1
 			end
 			param2 = wall*NROT+rot

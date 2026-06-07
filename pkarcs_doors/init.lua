@@ -1,6 +1,9 @@
-screwdriver = screwdriver or {}
+local screwdriver = _G["screwdriver"] or {}
 
 pkarcs_doors = {}
+
+-- Minetest < 5.4.0 compatibility
+local ALPHA_CLIP = core.features.use_texture_alpha_string_modes and "clip" or true
 
 -- Register Door Nodes
 pkarcs_doors.door = {
@@ -151,7 +154,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 		drawtype = "mesh",
 		mesh = "pkarcs_door_L.obj",
 		tiles = {door_tiles},
-		use_texture_alpha = true,
+		use_texture_alpha = ALPHA_CLIP,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		on_rotate = screwdriver.rotate_simple,
@@ -175,7 +178,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 			pkarcs_doors.open(pos, node, name, "L", door_sound)
 		end,
 	}
-	
+
 	if minetest.get_modpath("mesecons") then
 		Ldoor_def.mesecons = {
 			effector = {
@@ -194,7 +197,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 		drawtype = "mesh",
 		mesh = "pkarcs_door_L_open.obj",
 		tiles = {door_tiles},
-		use_texture_alpha = true,
+		use_texture_alpha = ALPHA_CLIP,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		on_rotate = screwdriver.rotate_simple,
@@ -220,7 +223,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 			pkarcs_doors.close(pos, node, name, "L", door_sound)
 		end,
 	}
-	
+
 		if minetest.get_modpath("mesecons") then
 		Ldoor_open_def.mesecons = {
 			effector = {
@@ -231,7 +234,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 			}
 		}
 	end
-	
+
 	minetest.register_node(":pkarcs_doors:" ..name.. "_Ldoor_open", Ldoor_open_def)
 
 
@@ -242,7 +245,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 		drawtype = "mesh",
 		mesh = "pkarcs_door_R.obj",
 		tiles = {door_tiles},
-		use_texture_alpha = true,
+		use_texture_alpha = ALPHA_CLIP,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		on_rotate = screwdriver.rotate_simple,
@@ -277,7 +280,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 			}
 		}
 	end
-	
+
 	minetest.register_node(":pkarcs_doors:" ..name.. "_Rdoor", Rdoor_def)
 
 
@@ -285,7 +288,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 		drawtype = "mesh",
 		mesh = "pkarcs_door_R_open.obj",
 		tiles = {door_tiles},
-		use_texture_alpha = true,
+		use_texture_alpha = ALPHA_CLIP,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		on_rotate = screwdriver.rotate_simple,
@@ -311,7 +314,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 			pkarcs_doors.close(pos, node, name, "R", door_sound)
 		end,
 	}
-	
+
 		if minetest.get_modpath("mesecons") then
 		Rdoor_open_def.mesecons = {
 			effector = {
@@ -322,7 +325,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 			}
 		}
 	end
-	
+
 	minetest.register_node(":pkarcs_doors:" ..name.. "_Rdoor_open", Rdoor_open_def)
 
 
