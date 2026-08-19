@@ -59,6 +59,7 @@ function pkarcs.register_all(nodename, desc, tile, sound, group, craftmaterial)
 			}
 		},
 		groups = group,
+		is_ground_content = false,
 		sounds = sound,
 
 		on_place = function(itemstack, placer, pointed_thing)
@@ -134,6 +135,7 @@ function pkarcs.register_all(nodename, desc, tile, sound, group, craftmaterial)
 			}
 		},
 		groups = group,
+		is_ground_content = false,
 		sounds = sound,
 
 		on_place = function(itemstack, placer, pointed_thing)
@@ -228,6 +230,7 @@ function pkarcs.register_all(nodename, desc, tile, sound, group, craftmaterial)
 			}
 		},
 		groups = group,
+		is_ground_content = false,
 		sounds = sound,
 
 		on_place = function(itemstack, placer, pointed_thing)
@@ -287,12 +290,13 @@ end
 -- register nodes
 
 function pkarcs.register_node(name)
-	local node_def = minetest.registered_nodes[name]
-	if not node_def then
+	local orig_def = minetest.registered_nodes[name]
+	if not orig_def then
 		minetest.log("warning", "[pkarcs] Skipping unknown node: ".. name)
 		return
 	end
 	local node_name = name:split(':')[2]
+	local node_def = table.copy(orig_def)
 
 	if not node_def.tiles then
 		node_def.tiles = table.copy(node_def.tile_images)

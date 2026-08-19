@@ -224,7 +224,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 		end,
 	}
 
-		if minetest.get_modpath("mesecons") then
+	if minetest.get_modpath("mesecons") then
 		Ldoor_open_def.mesecons = {
 			effector = {
 				action_off = function(pos, node)
@@ -315,7 +315,7 @@ for _, row in ipairs(pkarcs_doors.door) do
 		end,
 	}
 
-		if minetest.get_modpath("mesecons") then
+	if minetest.get_modpath("mesecons") then
 		Rdoor_open_def.mesecons = {
 			effector = {
 				action_off = function(pos, node)
