@@ -1,6 +1,9 @@
-screwdriver = screwdriver or {}
+local screwdriver = _G["screwdriver"] or {}
 
 pkarcs_doors3 = {}
+
+-- Minetest < 5.4.0 compatibility
+local ALPHA_CLIP = core.features.use_texture_alpha_string_modes and "clip" or true
 
 -- Register Door Nodes
 pkarcs_doors3.door = {
@@ -152,11 +155,11 @@ for _, row in ipairs(pkarcs_doors3.door) do
 		drawtype = "mesh",
 		mesh = "pkarcs_doors3_L.obj",
 		tiles = {door_tiles},
-		use_texture_alpha = true,
+		use_texture_alpha = ALPHA_CLIP,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		on_rotate = screwdriver.rotate_simple,
-		sunlight_propogates = true,
+		sunlight_propagates = true,
 		is_ground_content = false,
 		groups = mat_groups,
 		sounds = mat_sound,
@@ -194,12 +197,12 @@ for _, row in ipairs(pkarcs_doors3.door) do
 		drawtype = "mesh",
 		mesh = "pkarcs_doors3_L_open.obj",
 		tiles = {door_tiles},
-		use_texture_alpha = true,
+		use_texture_alpha = ALPHA_CLIP,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		on_rotate = screwdriver.rotate_simple,
 		legacy_facedir_simple = true,
-		sunlight_propogates = true,
+		sunlight_propagates = true,
 		is_ground_content = false,
 		groups = mat_groups,
 		drop = "pkarcs_doors3:" ..name.. "_Ldoor",
@@ -241,11 +244,11 @@ for _, row in ipairs(pkarcs_doors3.door) do
 		drawtype = "mesh",
 		mesh = "pkarcs_doors3_R.obj",
 		tiles = {door_tiles},
-		use_texture_alpha = true,
+		use_texture_alpha = ALPHA_CLIP,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		on_rotate = screwdriver.rotate_simple,
-		sunlight_propogates = true,
+		sunlight_propagates = true,
 		is_ground_content = false,
 		groups = mat_groups,
 		sounds = mat_sound,
@@ -284,12 +287,12 @@ for _, row in ipairs(pkarcs_doors3.door) do
 		drawtype = "mesh",
 		mesh = "pkarcs_doors3_R_open.obj",
 		tiles = {door_tiles},
-		use_texture_alpha = true,
+		use_texture_alpha = ALPHA_CLIP,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		on_rotate = screwdriver.rotate_simple,
 		legacy_facedir_simple = true,
-		sunlight_propogates = true,
+		sunlight_propagates = true,
 		is_ground_content = false,
 		groups = mat_groups,
 		drop = "pkarcs_doors3:" ..name.. "_Rdoor",

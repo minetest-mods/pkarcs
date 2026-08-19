@@ -19,12 +19,11 @@ end
 
 --]]
 
-
 pkarcs = {}
 
 -- convert integer coordinates to nodebox coordinates
 
-function nb(n)
+local function nb(n)
 	return n/16-1/2
 end
 
@@ -33,7 +32,7 @@ end
 function pkarcs.register_all(nodename, desc, tile, sound, group, craftmaterial)
 	local tile_collection
 	if type(tile) == "string" then
-		tile_collection[1] = tile
+		tile_collection =  { tile }
 	else
 		tile_collection = table.copy(tile)
 	end
